@@ -5,6 +5,7 @@ source ./lib.sh
 # menu_header
 ascii_art
 check_env
+verify_user
 display_menu
 
 
@@ -25,7 +26,7 @@ while true; do
         9) exit 0 ;;
         *)  error_msg "Invalid choice!"
             sleep 0.5
-            echo -e "\nHere is your Guide...\n" 
+            slow_msg "\nHere is your Guide..." 0.1
             sleep 1
             display_menu ;;
     esac

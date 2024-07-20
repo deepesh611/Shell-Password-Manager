@@ -8,8 +8,8 @@ CAYN='\033[0;36m'
 NC='\033[0m'
 
 # Load Application Configurations
-REPO_URL=$(jq -r ".repo_url" config.json)
-BRANCH=$(jq -r ".branch" config.json)
+REPO_URL=$(jq -r ".repo_url" ../config.json)
+BRANCH=$(jq -r ".branch" ../config.json)
 
 
 # Function to display various messages
@@ -333,10 +333,34 @@ ascii_art() {
             | |\/| | / _` || '_ \  / _` | / _ \| '__|   
             | |  | || (_| || | | || (_| ||  __/| |      
             |_|  |_| \__,_||_| |_| \__, | \___||_|      
-                        __/ |              
-                       |___/               
+                                    __/ |              
+                                   |___/               
 
 EOF
     )
     echo -e "${MAGENTA}${art}${NC}"
+}
+
+
+verify_user() {
+    local stored_hashed_password=$(grep "^PASSWORD=" .env | cut -d '=' -f2)
+    
+    if [ -z "$stored_hashed_password" ]; then
+        error_msg "Error: Master password not found in .env file."
+        exit 1
+    fi
+
+    echo ""
+    read -rsp "Enter the master password: " password
+    echo ""
+
+    if [ "$(hash_password "$password")" != "$stored_hashed_password" ]; then
+        error_msg "Incorrect password!"
+        sleep 2
+        exit 1
+    else
+        success_msg "Access granted!"
+        sleep 1
+    fi
+
 }

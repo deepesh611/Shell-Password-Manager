@@ -14,6 +14,7 @@ if [ -f .env ]; then
     response=$(echo "$response" | tr '[:upper:]' '[:lower:]')
     
     if [ "$response" != "y" ]; then
+        echo ""
         success_msg "Exiting setup..."
         sleep 2
         exit 0
