@@ -10,7 +10,6 @@ NC='\033[0m'
 # Load Application Configurations
 REPO_URL=$(jq -r ".repo_url" config.json)
 BRANCH=$(jq -r ".branch" config.json)
-BACKUP_DIR=$(jq -r ".backup_dir" config.json)
 
 
 # Function to display various messages
