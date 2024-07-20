@@ -2,10 +2,11 @@
 
 source src/lib.sh
 
-backup
+echo ""
+info_msg "Updating the Application..."
+
 update_repo
 
-success_msg "Setup completed successfully...\n"
 sleep 3
 
 

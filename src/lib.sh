@@ -208,16 +208,6 @@ show_help() {
 }
 
 
-# Backup current files
-backup() {
-    echo -e "\nBacking up current files..."
-    mkdir -p "$BACKUP_DIR"
-    TIMESTAMP=$(date +"%Y%m%d%H%M%S")
-    tar -czf "$BACKUP_DIR/backup_$TIMESTAMP.tar.gz" *
-    success_msg "Backup completed successfully...\n"
-}
-
-
 # Update repository
 update_repo() {
     echo -e "Updating repository from $REPO_URL branch $BRANCH..."
@@ -231,6 +221,7 @@ update_repo() {
         git clone -b "$BRANCH" "$REPO_URL" .
     fi
 
+    echo ""
     success_msg "Repository updated successfully...\n"
 }
 
@@ -337,12 +328,12 @@ check_password_strength() {
 # Function to display ASCII art for "Password Manager"
 ascii_art() {
     local art=$(cat << "EOF"
- __  __                                     
-|  \/  |                                    
-| \  / |  __ _  _ __    __ _   ___  _ __    
-| |\/| | / _` || '_ \  / _` | / _ \| '__|   
-| |  | || (_| || | | || (_| ||  __/| |      
-|_|  |_| \__,_||_| |_| \__, | \___||_|      
+             __  __                                     
+            |  \/  |                                    
+            | \  / |  __ _  _ __    __ _   ___  _ __    
+            | |\/| | / _` || '_ \  / _` | / _ \| '__|   
+            | |  | || (_| || | | || (_| ||  __/| |      
+            |_|  |_| \__,_||_| |_| \__, | \___||_|      
                         __/ |              
                        |___/               
 
