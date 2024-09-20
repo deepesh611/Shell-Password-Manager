@@ -26,13 +26,12 @@ while true; do
         9) exit 0 ;;
         *)  error_msg "Invalid choice!"
             sleep 0.5
-            slow_msg "\nHere is your Guide..." 0.1
+            slow_msg "Here is your Guide..." 0.1
             sleep 1
             display_menu ;;
     esac
     sleep 1
     echo ""
-    slow_msg "Press Enter to continue..." 0.05
     read -r
 
 done

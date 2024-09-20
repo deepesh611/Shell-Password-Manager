@@ -1,11 +1,11 @@
 #!/bin/bash
 
 # Define colors
+NC='\033[0m'
 RED='\033[0;31m'
+CAYN='\033[0;36m'
 GREEN='\033[0;32m'
 MAGENTA='\033[0;35m'
-CAYN='\033[0;36m'
-NC='\033[0m'
 
 # Load Application Configurations
 REPO_URL=$(jq -r ".repo_url" ../config.json)
