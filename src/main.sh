@@ -31,7 +31,7 @@ while true; do
             display_menu ;;
     esac
     sleep 1
-    echo ""
+    echo -e "${MAGENTA}Press Enter to Continue...${NC}"
     read -r
 
 done
